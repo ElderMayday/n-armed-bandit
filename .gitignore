@@ -1,0 +1,4 @@
+*.exe
+nArmedBandit/bin/
+nArmedBandit/.vs/
+nArmedBandit/obj/
