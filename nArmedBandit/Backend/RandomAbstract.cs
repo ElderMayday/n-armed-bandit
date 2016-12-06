@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace nArmedBandit.Backend
 {
-    abstract class GameAbstract
+    abstract class RandomAbstract
     {
-        public int NumberOfActions { get; protected set; }
-
-        public abstract double Reward(int actionNumber);
+        public abstract double Generate();
     }
 }

@@ -2,21 +2,21 @@
 
 namespace nArmedBandit.Backend
 {
-    class RandomNormal
+    class RandomNormal : RandomAbstract
     {
         public double Mean { get; protected set; }
         public double Deviation { get; protected set; }
         protected int rounds;
         protected static Random random = new Random();
 
-        public RandomNormal(double mean, double deviation)
+        public RandomNormal(double mean, double deviation) : base()
         {
             this.Mean = mean;
             this.Deviation = deviation;
             rounds = 12;
         }
 
-        public double Generate()
+        public override double Generate()
         {
             double result = 0.0;
 
