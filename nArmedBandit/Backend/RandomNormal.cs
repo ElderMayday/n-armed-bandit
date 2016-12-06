@@ -2,12 +2,12 @@
 
 namespace nArmedBandit.Backend
 {
-    class RandomNormal : RandomAbstract
+    class RandomNormal : Random
     {
         public double Mean { get; protected set; }
         public double Deviation { get; protected set; }
         protected int rounds;
-        protected static Random random = new Random();
+        protected static System.Random random = new System.Random();
 
         public RandomNormal(double mean, double deviation) : base()
         {
