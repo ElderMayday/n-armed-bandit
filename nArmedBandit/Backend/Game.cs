@@ -8,11 +8,11 @@ namespace nArmedBandit.Backend
 {
     class Game
     {
-        public List<Action> Random { get; protected set; }
+        public List<Action> Action { get; protected set; }
 
-        public void AddRandomDistribution(Action newAction)
+        public Game(List<Action> action)
         {
-            Random.Add(newAction);
+            this.Action = action;
         }
     }
 }

@@ -9,12 +9,15 @@ namespace nArmedBandit.Backend
     class Simulation
     {
         public Game Game { get; protected set; }
-        protected int round;
 
         public Simulation(Game game)
         {
             this.Game = game;
-            round = 0;
+        }
+
+        public void Simulate()
+        {
+            int round = 0;
         }
     }
 }
