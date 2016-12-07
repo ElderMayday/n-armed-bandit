@@ -55,6 +55,7 @@
     <Compile Include="Backend\SelectorDynamic.cs" />
     <Compile Include="Backend\SelectorGreedy.cs" />
     <Compile Include="Backend\SelectorRandom.cs" />
+    <Compile Include="Backend\SelectorSoftmax.cs" />
     <Compile Include="Backend\Simulation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

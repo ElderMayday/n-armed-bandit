@@ -28,7 +28,7 @@ namespace nArmedBandit
 
             Game game = new Game(action);
 
-            Selector selector = new SelectorGreedy(0.5);
+            Selector selector = new SelectorSoftmax(1.0);
 
             Simulation simulation = new Simulation(game, selector);
             simulation.Simulate(100);
