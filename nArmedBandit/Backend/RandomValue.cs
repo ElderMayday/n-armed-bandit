@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace nArmedBandit.Backend
 {
-    abstract class Random
+    abstract class RandomValue
     {
         public abstract double Generate();
     }
