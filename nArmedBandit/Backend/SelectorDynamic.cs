@@ -14,12 +14,12 @@ namespace nArmedBandit.Backend
         {
         }
 
-        public override int Select(double[] estimate)
+        public override int Select(List<GameAction> action)
         {
             Round++;
-            return DynamicSelect(estimate);
+            return DynamicSelect(action);
         }
 
-        protected abstract int DynamicSelect(double[] estimate);
+        protected abstract int DynamicSelect(List<GameAction> action);
     }
 }

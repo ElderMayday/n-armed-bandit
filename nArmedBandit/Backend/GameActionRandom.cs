@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace nArmedBandit.Backend
 {
-    class ActionRandom : Action
+    class GameActionRandom : GameAction
     {
         protected RandomValue random;
 
-        public ActionRandom(RandomValue random) : base()
+        public GameActionRandom(RandomValue random) : base()
         {
             this.random = random;
         }

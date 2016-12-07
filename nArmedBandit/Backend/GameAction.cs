@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace nArmedBandit.Backend
 {
-    abstract class Action
+    abstract class GameAction
     {
         /// <summary>
         /// Number of times chosen
@@ -15,7 +15,7 @@ namespace nArmedBandit.Backend
 
         public double Estimate { get; protected set; }
 
-        public Action()
+        public GameAction()
         {
             SelectedNumber = 0;
             Estimate = 0.0;

@@ -21,7 +21,7 @@ namespace nArmedBandit.Backend
         {
             for (int round = 0; round < maxRound; round++)
             {
-                int selected = Selector.Select(Game.Estimate);
+                int selected = Selector.Select(Game.Action);
                 Game.Select(selected);
             }
         }

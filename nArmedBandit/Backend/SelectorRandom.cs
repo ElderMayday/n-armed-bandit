@@ -14,9 +14,9 @@ namespace nArmedBandit.Backend
         {
         }
 
-        public override int Select(double[] estimate)
+        public override int Select(List<GameAction> action)
         {
-            return random.Next(estimate.Length);
+            return random.Next(action.Count);
         }
     }
 }

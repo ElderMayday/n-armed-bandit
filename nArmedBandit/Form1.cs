@@ -1,4 +1,5 @@
-﻿using System;
+﻿using nArmedBandit.Backend;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace nArmedBandit
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            List<GameAction> action = new List<GameAction>();
+            action.Add(new GameActionRandom(new RandomValueNormal(2.3, 0.9)));
+            action.Add(new GameActionRandom(new RandomValueNormal(2.1, 0.6)));
+            action.Add(new GameActionRandom(new RandomValueNormal(1.5, 0.4)));
+            action.Add(new GameActionRandom(new RandomValueNormal(1.3, 2.0)));
+
+            Game game = new Game(action);
+
+            Selector selector = new SelectorRandom();
+
+            Simulation simulation = new Simulation(game, selector);
+            simulation.Simulate(1000);
         }
     }
 }

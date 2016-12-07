@@ -12,6 +12,6 @@ namespace nArmedBandit.Backend
         {
         }
 
-        public abstract int Select(double[] estimate);
+        public abstract int Select(List<GameAction> action);
     }
 }
