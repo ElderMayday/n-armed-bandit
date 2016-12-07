@@ -8,14 +8,14 @@ namespace nArmedBandit.Backend
 {
     class ActionRandom : Action
     {
-        protected Random random;
+        protected RandomValue random;
 
-        public ActionRandom(Random random)
+        public ActionRandom(RandomValue random) : base()
         {
             this.random = random;
         }
 
-        public override double Reward()
+        protected override double Reward()
         {
             return random.Generate();
         }
