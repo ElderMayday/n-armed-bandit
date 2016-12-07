@@ -9,7 +9,7 @@ namespace nArmedBandit.Backend
     abstract class GameAction
     {
         /// <summary>
-        /// Number of times chosen
+        /// Number of times this action is chosen
         /// </summary>
         public int SelectedNumber { get; protected set; }
 

@@ -28,10 +28,10 @@ namespace nArmedBandit
 
             Game game = new Game(action);
 
-            Selector selector = new SelectorRandom();
+            Selector selector = new SelectorGreedy(0.5);
 
             Simulation simulation = new Simulation(game, selector);
-            simulation.Simulate(1000);
+            simulation.Simulate(100);
         }
     }
 }
