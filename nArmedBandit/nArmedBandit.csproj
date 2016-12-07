@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>nArmedBandit</RootNamespace>
     <AssemblyName>nArmedBandit</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +55,8 @@
     <Compile Include="Backend\RandomValueNormal.cs" />
     <Compile Include="Backend\Selector.cs" />
     <Compile Include="Backend\SelectorDynamic.cs" />
+    <Compile Include="Backend\SelectorDynamicGreedy.cs" />
+    <Compile Include="Backend\SelectorDynamicSoftmax.cs" />
     <Compile Include="Backend\SelectorGreedy.cs" />
     <Compile Include="Backend\SelectorRandom.cs" />
     <Compile Include="Backend\SelectorSoftmax.cs" />
@@ -77,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

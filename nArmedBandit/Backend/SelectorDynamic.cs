@@ -12,6 +12,12 @@ namespace nArmedBandit.Backend
 
         public SelectorDynamic() : base()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            Round = 0;
         }
 
         public override int Select(List<GameAction> action)
