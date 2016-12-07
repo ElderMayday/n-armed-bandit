@@ -49,8 +49,11 @@
     <Compile Include="Backend\Game.cs" />
     <Compile Include="Backend\Action.cs" />
     <Compile Include="Backend\ActionRandom.cs" />
-    <Compile Include="Backend\Random.cs" />
-    <Compile Include="Backend\RandomNormal.cs" />
+    <Compile Include="Backend\RandomValue.cs" />
+    <Compile Include="Backend\RandomValueNormal.cs" />
+    <Compile Include="Backend\Selector.cs" />
+    <Compile Include="Backend\SelectorDynamic.cs" />
+    <Compile Include="Backend\SelectorRandom.cs" />
     <Compile Include="Backend\Simulation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
