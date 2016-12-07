@@ -33,5 +33,10 @@ namespace nArmedBandit.Backend
                 return index;
             }
         }
+
+        public override string ToString()
+        {
+            return "Epsilon-greedy " + epsilon.ToString("0.00");
+        }
     }
 }

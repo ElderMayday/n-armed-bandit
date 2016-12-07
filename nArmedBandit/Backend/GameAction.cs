@@ -17,6 +17,11 @@ namespace nArmedBandit.Backend
 
         public GameAction()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
             SelectedNumber = 0;
             Estimate = 0.0;
         }

@@ -50,5 +50,10 @@ namespace nArmedBandit.Backend
 
             return probability.Count - 1;
         }
+
+        public override string ToString()
+        {
+            return "Softmax " + tau.ToString("0.00");
+        }
     }
 }

@@ -18,5 +18,10 @@ namespace nArmedBandit.Backend
         {
             return random.Next(action.Count);
         }
+
+        public override string ToString()
+        {
+            return "Random";
+        }
     }
 }
