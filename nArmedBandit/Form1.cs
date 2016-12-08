@@ -92,7 +92,7 @@ namespace nArmedBandit
 
             initializeNewChart("Action", "Selected");
             chart.ChartAreas[0].AxisY.Maximum = rounds;
-            initializeNewSeries(plotName, SeriesChartType.Column);
+            initializeNewSeries(plotName, SeriesChartType.Column, 0);
 
             for (int i = 0; i < action.Count; i++)
                 chart.Series[plotName].Points.AddXY(i, game.Action[i].SelectedNumber);
@@ -111,13 +111,16 @@ namespace nArmedBandit
                 Simulation simulation = new Simulation(game, selector);
                 string plotName = selector.ToString();
 
-                initializeNewSeries(plotName, SeriesChartType.Line);
+                initializeNewSeries(plotName, SeriesChartType.Line, selectorIndex);
 
                 for (int i = 1; i <= rounds; i++)
                 {
                     simulation.NextStep();
                     chart.Series[plotName].Points.AddXY(i, simulation.Game.Action[armIndex].Estimate);
                 }
+
+                chart.ChartAreas[0].AxisY.Minimum = Math.Truncate((game.Action[armIndex].Estimate - 0.3) * 10) / 10;
+                chart.ChartAreas[0].AxisY.Maximum = Math.Truncate((game.Action[armIndex].Estimate + 0.3) * 10) / 10;
 
                 resetActions(action);
             }
@@ -136,7 +139,7 @@ namespace nArmedBandit
                 Simulation simulation = new Simulation(game, selector);
                 string plotName = selector.ToString();
 
-                initializeNewSeries(plotName, SeriesChartType.Line);
+                initializeNewSeries(plotName, SeriesChartType.Line, selectorIndex);
 
                 for (int i = 1; i <= rounds; i++)
                 {
@@ -162,11 +165,25 @@ namespace nArmedBandit
             chart.ChartAreas[0].AxisX.LabelStyle.Format = "{0:0}";
         }
 
-        private void initializeNewSeries(string name, SeriesChartType type)
+        private void initializeNewSeries(string name, SeriesChartType type, int colorIndex)
         {
             chart.Series.Add(name);
             chart.Series[name].ChartType = type;
-            chart.Series[name].Color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+
+            Color color;
+
+            switch (colorIndex)
+            {
+                case 0: color = Color.Black; break;
+                case 1: color = Color.Blue; break;
+                case 2: color = Color.Green; break;
+                case 3: color = Color.Yellow; break;
+                case 4: color = Color.Red; break;
+                case 5: color = Color.Orange; break;
+                default: color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256)); break;
+            }
+
+            chart.Series[name].Color = color;
             chart.Series[name].BorderWidth = 2;
         }
 
