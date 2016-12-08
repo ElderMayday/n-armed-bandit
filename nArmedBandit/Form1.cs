@@ -78,13 +78,39 @@ namespace nArmedBandit
 
             if (radioReward.Checked)
                 AlgorithmRewardChart(selectors, action);
+            else if (radioArm.Checked)
+                ArmEstimateChart(selectors, action, (int)numericArm.Value);
+
         }
 
-        private void AlgorithmRewardChart(List<Selector> selectors, List<GameAction> action)
+        private void ArmEstimateChart(List<Selector> selectors, List<GameAction> action, int armIndex)
         {
             int rounds = 1000;
 
-            
+            initializeNewChart();
+
+            for (int selectorIndex = 0; selectorIndex < selectors.Count; selectorIndex++)
+            {
+                Selector selector = selectors[selectorIndex];
+                Game game = new Game(action);
+                Simulation simulation = new Simulation(game, selector);
+                string plotName = selector.ToString();
+
+                initializeNewSeries(plotName, SeriesChartType.Line);
+
+                for (int i = 1; i <= rounds; i++)
+                {
+                    simulation.NextStep();
+                    chart.Series[plotName].Points.AddXY(i, simulation.Game.Action[armIndex].Estimate);
+                }
+
+                resetActions(action);
+            }
+        }
+        
+        private void AlgorithmRewardChart(List<Selector> selectors, List<GameAction> action)
+        {
+            int rounds = 1000;
 
             initializeNewChart();
 
@@ -127,7 +153,7 @@ namespace nArmedBandit
             chart.Series.Add(name);
             chart.Series[name].ChartType = type;
             chart.Series[name].Color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
-            chart.Series[name].BorderWidth = 3;
+            chart.Series[name].BorderWidth = 2;
         }
 
         private void ResetActions(List<GameAction> list)
