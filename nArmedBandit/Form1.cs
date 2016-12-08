@@ -1,12 +1,7 @@
 ﻿using nArmedBandit.Backend;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -80,14 +75,34 @@ namespace nArmedBandit
                 AlgorithmRewardChart(selectors, action);
             else if (radioArm.Checked)
                 ArmEstimateChart(selectors, action, (int)numericArm.Value);
+            else if (radioHistogram.Checked)
+                ArmHistogram(selectors, action, (int)numericSelector.Value);
+        }
 
+        private void ArmHistogram(List<Selector> selectors, List<GameAction> action, int selectorIndex)
+        {
+            int rounds = 1000;
+
+            Selector selector = selectors[selectorIndex];
+            Game game = new Game(action);
+            Simulation simulation = new Simulation(game, selector);
+            simulation.SimulateInstantly(rounds);
+
+            string plotName = "Action histogram";
+
+            initializeNewChart("Action", "Selected");
+            chart.ChartAreas[0].AxisY.Maximum = rounds;
+            initializeNewSeries(plotName, SeriesChartType.Column);
+
+            for (int i = 0; i < action.Count; i++)
+                chart.Series[plotName].Points.AddXY(i, game.Action[i].SelectedNumber);
         }
 
         private void ArmEstimateChart(List<Selector> selectors, List<GameAction> action, int armIndex)
         {
             int rounds = 1000;
 
-            initializeNewChart();
+            initializeNewChart("Round", "Estimate");
 
             for (int selectorIndex = 0; selectorIndex < selectors.Count; selectorIndex++)
             {
@@ -112,7 +127,7 @@ namespace nArmedBandit
         {
             int rounds = 1000;
 
-            initializeNewChart();
+            initializeNewChart("Round", "Reward");
 
             for (int selectorIndex = 0; selectorIndex < selectors.Count; selectorIndex++)
             {
@@ -139,13 +154,12 @@ namespace nArmedBandit
                 action[i].Reset();
         }
 
-        private void initializeNewChart()
+        private void initializeNewChart(string xTitle, string yTitle)
         {
             chart.Series.Clear();
-            chart.ChartAreas[0].AxisX.Title = "Round";
-            chart.ChartAreas[0].AxisY.Title = "Reward";
+            chart.ChartAreas[0].AxisX.Title = xTitle;
+            chart.ChartAreas[0].AxisY.Title = yTitle;
             chart.ChartAreas[0].AxisX.LabelStyle.Format = "{0:0}";
-            chart.ChartAreas[0].AxisY.Minimum = 0;
         }
 
         private void initializeNewSeries(string name, SeriesChartType type)
