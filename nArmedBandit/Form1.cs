@@ -61,6 +61,12 @@ namespace nArmedBandit
             else
             {
                 selectors = new List<Selector>();
+                selectors.Add(new SelectorRandom());
+                selectors.Add(new SelectorGreedy(0.0));
+                selectors.Add(new SelectorGreedy(0.1));
+                selectors.Add(new SelectorGreedy(0.2));
+                selectors.Add(new SelectorSoftmax(1.0));
+                selectors.Add(new SelectorSoftmax(0.1));
                 selectors.Add(new SelectorDynamicGreedy());
                 selectors.Add(new SelectorDynamicSoftmax());
 
@@ -180,6 +186,8 @@ namespace nArmedBandit
                 case 3: color = Color.Yellow; break;
                 case 4: color = Color.Red; break;
                 case 5: color = Color.Orange; break;
+                case 6: color = Color.Violet; break;
+                case 7: color = Color.Aqua; break;
                 default: color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256)); break;
             }
 
